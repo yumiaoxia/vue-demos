@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性与监控</title>
+</head>
+
+<body>
+    <h1>计算属性与监控</h1>
+    <div id="app">
+        姓：<input type="text" v-model="firstName" /><br /> 名：
+        <input type="text" v-model="lastName" /><br /> 姓名(单向)：
+        <input type="/text" v-model="fullName1"><br /> 姓名(单向)：
+        <input type="/text" v-model="fullName2"><br /> 姓名(双向)：
+        <input type="/text" v-model="fullName3"><br />
+    </div>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                firstName: "A",
+                lastName: "B",
+                //fullName1: "A B"
+                fullName2: "A B"
+            },
+            computed: {
+                fullName1() {
+                    return this.firstName + ' ' + this.lastName;
+                },
+                fullName3: {
+                    get() {
+                        return this.firstName + ' ' + this.lastName;
+                    },
+                    set(value) {
+                        const array = value.split(" ");
+                        this.firstName = array[0];
+                        this.lastName = array[1];
+                    }
+                }
+            },
+            watch: {
+                firstName: function(value) {
+                    this.fullName2 = value + " " + this.lastName;
+                }
+            },
+
+        })
+        vm.$watch("lastName",
+            function(value) {
+                this.fullName2 = this.firstName + ' ' + value;
+            }
+        )
+    </script>
+</body>
+
+</html>

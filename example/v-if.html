@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>v-if&v-else&v-show</title>
+</head>
+
+<body>
+    <h1>v-if&v-else&v-show</h1>
+    <hr />
+    <div id="app">
+        <div v-if="isLogin">你好，Sherman</div>
+        <div v-else>请登录</div>
+        <!-- v-show和v-if的区别是元素加载，通过display控制标签显示 -->
+    </div>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: "#app",
+            data: {
+                isLogin: true
+            }
+        })
+    </script>
+</body>
+
+</html>
