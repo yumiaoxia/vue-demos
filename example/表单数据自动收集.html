@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div id="demo">
+        <form action="/xxx" @submit.prevent="handleSubmit">
+            <span>用户名：</span>
+            <input type="text" v-model="username"><br />
+            <span>密码：</span>
+            <input type="password" v-model="pwd"><br />
+            <span>性别:</span>
+            <input type="radio" value="nv" id="female" v-model="gender">
+            <label for="female">女</label>
+            <input type="radio" value="nan" id="male" v-model="gender">
+            <label for="female">男</label><br />
+            <span>爱好:</span>
+            <input type="checkbox" id="basket" value="basket" v-model="likes">
+            <label for="basket">篮球</label>
+            <input type="checkbox" id="foot" value="foot" v-model="likes">
+            <label for="foot">足球</label>
+            <input type="checkbox" id="pingpong" value="pingpong" v-model="likes">
+            <label for="pingpong">乒乓球</label><br />
+            <span>城市:</span>
+            <select v-model="cityId">
+                    <option value="0">未选择</option>
+                    <option v-for="(city,index) in allcitys" :key="index" :value="city.id">{{city.name}}</option>
+                </select><br />
+            <span>介绍:</span><br />
+            <textarea rows="10"></textarea></br><br />
+            <input type="submit" value="注册">
+        </form>
+    </div>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#demo',
+            data: {
+                username: '',
+                pwd: '',
+                gender: 'nan',
+                likes: ['foot'],
+                allcitys: [{
+                    name: '北京',
+                    id: '1'
+                }, {
+                    name: '广东',
+                    id: '2'
+                }, {
+                    name: '上海',
+                    id: '3'
+                }],
+                cityId: '0'
+            },
+            methods: {
+                handleSubmit() {
+                    console.log(this.username, this.pwd, this.gender, this.likes, this.cityId);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
