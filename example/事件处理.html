@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>事件处理</title>
+</head>
+
+<body>
+    <div id="demo">
+        <h2>1.绑定监听</h2>
+        <button @click="test1">test1</button>
+        <button @click="test2('haha')">test2</button>
+        <button @click="test3($event)">test3</button>
+        <button @click="test4(123456,$event)">test4</button>
+        <h2>2.事件修饰符</h2>
+        <div style="width:200px;height:200px;background: red" @click="test5">
+            <div style="width:100px;height:100px;background: blue" @click.stop="test6">
+            </div>
+        </div>
+
+        <h3>事件默认行为</h3>
+        <a href="http://www.baidu.com" @click="test7($event)">百度</a>
+
+        <h2>3.按键修饰符</h2>
+        <input type="text" @keyUp.13="test8($event)">
+
+    </div>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#demo',
+            data: {
+                test1() {
+                    alert("aa");
+                },
+                test2(value) {
+                    alert(value);
+                },
+                test3(event) {
+                    alert(event.target.innerHTML);
+                },
+                test4(num, event) {
+                    alert(num + "-------------" + event.target.innerHTML);
+                },
+                test5() {
+                    alert("out");
+                },
+                test6() {
+                    alert("inner");
+                },
+                test7(event) {
+                    event.preventDefault();
+                    alert("不去百度了");
+                },
+                test8() {
+                    alert(event.keyCode + "======" + event.target.value);
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>
