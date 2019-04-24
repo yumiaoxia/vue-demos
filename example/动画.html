@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .target {
+            width: 200px;
+            height: 100px;
+            background: red;
+        }
+        /* 可以设置不同的进入和离开动画 */
+        /* 设置持续时间和动画函数 */
+        
+        .bounce-enter-active {
+            animation: bounce .5s;
+        }
+        
+        .bounce-leave-active {
+            animation: bounce .5s reverse;
+        }
+        
+        @keyframes bounce {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="example-1">
+        <button @click="show = !show">
+                Toggle render
+            </button>
+        <transition name="bounce">
+            <div class="target" v-if="show"></div>
+        </transition>
+    </div>
+
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript">
+        new new Vue({
+            el: '#example-1',
+            data: {
+                show: true
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .target {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="example-1">
+        <button @click="show = !show">
+                Toggle render
+            </button>
+        <transition name="slide-fade" @enter="enter">
+            <div class="target" v-if="show"></div>
+        </transition>
+    </div>
+
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript">
+        new new Vue({
+            el: '#example-1',
+            data: {
+                show: true
+            },
+            methods: {
+                enter: function(el, done) {
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

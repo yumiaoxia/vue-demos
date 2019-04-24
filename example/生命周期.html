@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo">
+        <h2 v-if="isShow">定时器</h2>
+        <button @click="destroy">销毁vue实例</button>
+    </div>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#demo',
+            data: {
+                isShow: true
+            },
+            methods: {
+                destroy() {
+                    this.$destroy();
+                },
+            },
+            mounted() {
+                this.settervalId = setInterval(() => {
+                    console.log("==============")
+                    this.isShow = !this.isShow;
+                }, 1000);
+            },
+            beforeDestroy() {
+                clearInterval(this.settervalId);
+            },
+        })
+    </script>
+
+</body>
+
+</html>
